@@ -1,60 +1,331 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Catálogo de Productos de Aseo</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mambi | Productos Profesionales de Aseo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #e6f7ff 0%, #f0fff4 100%);
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 150, 200, 0.15);
+        }
+        .category-icon {
+            transition: all 0.3s ease;
+        }
+        .category-card:hover .category-icon {
+            transform: scale(1.1);
+            color: #38b2ac;
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <h1>Productos de Aseo</h1>
-    <nav>
-      <a href="#productos">Productos</a>
-      <a href="#nosotros">Nosotros</a>
-      <a href="#contacto">Contacto</a>
+<body class="font-sans bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="./imagenes/image.png" alt="Logo PureClean en azul con tipografía profesional y simbolo de gota de agua estilizada" class="h-12">
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-700 hover:text-teal-600 font-medium">Inicio</a>
+                <a href="#" class="text-gray-700 hover:text-teal-600 font-medium">Productos</a>
+                <a href="#" class="text-gray-700 hover:text-teal-600 font-medium">Soluciones</a>
+                <a href="#" class="text-gray-700 hover:text-teal-600 font-medium">Nosotros</a>
+                <a href="#" class="text-gray-700 hover:text-teal-600 font-medium">Contacto</a>
+            </div>
+            <div class="flex items-center">
+                <div class="relative mr-4 md:mr-0">
+                    <button id="cart-toggle" class="text-gray-700 hover:text-teal-600">
+                        <i class="fas fa-shopping-cart text-2xl"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-teal-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
+                    </button>
+                </div>
+                <button class="md:hidden text-gray-700 ml-4">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
     </nav>
-  </header>
 
-  <section class="hero">
-    <h2>¡Mantén tus espacios limpios y frescos!</h2>
-    <p>Catálogo de productos de aseo para el hogar, oficina o negocio.</p>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero-gradient py-20">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Soluciones Profesionales de Limpieza</h1>
+                <p class="text-lg text-gray-600 mb-8">Productos de alta calidad para hogares, empresas e instituciones. Tecnología avanzada que garantiza máxima higiene.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button class="bg-teal-600 hover:bg-teal-700 text-white py-3 px-6 rounded-lg font-medium transition duration-300">Ver Catálogo</button>
+                    <button class="border-2 border-teal-600 text-teal-600 hover:bg-teal-50 py-3 px-6 rounded-lg font-medium transition duration-300">Contactar Asesor</button>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c373b38a-ddb8-4f08-ab0c-4b69028b879c.png" alt="Equipo de limpieza profesional con uniformes azules usando productos de limpieza en un hospital brillante" class="rounded-lg shadow-xl max-w-full h-auto">
+            </div>
+        </div>
+    </section>
 
-  <section id="productos" class="productos">
-    <h2>Nuestros Productos</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="https://via.placeholder.com/200x200?text=Jabón+Líquido" alt="Jabón líquido">
-        <h3>Jabón Líquido</h3>
-        <p>Ideal para limpieza profunda. Aroma fresco.</p>
-        <span>$8.000</span>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/200x200?text=Desinfectante" alt="Desinfectante">
-        <h3>Desinfectante</h3>
-        <p>Elimina el 99.9% de bacterias. Uso doméstico o industrial.</p>
-        <span>$12.000</span>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/200x200?text=Limpiavidrios" alt="Limpiavidrios">
-        <h3>Limpiavidrios</h3>
-        <p>Brillo sin rayas para ventanas y espejos.</p>
-        <span>$6.500</span>
-      </div>
+    <!-- Categorías -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Nuestras Líneas de Productos</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Categoría 1 -->
+                <div class="category-card p-6 text-center hover:shadow-lg rounded-lg transition duration-300">
+                    <div class="category-icon text-4xl mb-4 text-teal-500">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Limpieza Profesional</h3>
+                    <p class="text-gray-600">Productos para sectores institucionales y de alto tráfico</p>
+                </div>
+                
+                <!-- Categoría 2 -->
+                <div class="category-card p-6 text-center hover:shadow-lg rounded-lg transition duration-300">
+                    <div class="category-icon text-4xl mb-4 text-teal-500">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Hogar</h3>
+                    <p class="text-gray-600">Soluciones seguras y efectivas para cada espacio de tu hogar</p>
+                </div>
+                
+                <!-- Categoría 3 -->
+                <div class="category-card p-6 text-center hover:shadow-lg rounded-lg transition duration-300">
+                    <div class="category-icon text-4xl mb-4 text-teal-500">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Industrial</h3>
+                    <p class="text-gray-600">Productos especializados para manejo de residuos y maquinaria</p>
+                </div>
+                
+                <!-- Categoría 4 -->
+                <div class="category-card p-6 text-center hover:shadow-lg rounded-lg transition duration-300">
+                    <div class="category-icon text-4xl mb-4 text-teal-500">
+                        <i class="fas fa-hand-sparkles"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Desinfección</h3>
+                    <p class="text-gray-600">Tecnología avanzada para eliminación de microorganismos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Nuestros Productos Destacados</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Selección de nuestros productos más innovadores y efectivos</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Producto 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0d7e7038-d28b-4c2c-93ed-2464b3014e10.png" alt="Botella de limpiador desinfectante multiusos con spray azul moderno sobre fondo blanco" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-teal-500 text-white px-2 py-1 rounded text-xs font-bold">NUEVO</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-semibold mb-2">Desinfectante Multiusos Pro</h3>
+                            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded">5L</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Elimina el 99.9% de bacterias y virus sin dejar residuos.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-gray-900">$89,900</span>
+                            <button class="text-teal-600 hover:text-teal-800 font-medium flex items-center">
+                                Ver más <i class="fas fa-chevron-right ml-1 text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2e65ee9e-5e19-47f4-9f61-e2806f8ebf19.png" alt="Paquete de toallas desinfectantes en envase plástico con cierre hermético y diseños azules" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">MÁS VENDIDO</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-semibold mb-2">Toallas Desinfectantes</h3>
+                            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded">80 uds</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Prácticas tolistas prehumedecidas para desinfección rápida.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-gray-900">$24.900</span>
+                            <button class="text-teal-600 hover:text-teal-800 font-medium flex items-center">
+                                Ver más <i class="fas fa-chevron-right ml-1 text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2c1f3ad5-1172-4067-b500-8bb81f1bb6c9.png" alt="Juego de limpieza premium con cepillos ergonómicos y botellas dosificadoras en acero inoxidable" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-semibold mb-2">Kit Profesional Limpieza</h3>
+                            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded">7 piezas</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Todo lo necesario para una limpieza profesional y eficiente.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-gray-900">$149.900</span>
+                            <button class="text-teal-600 hover:text-teal-800 font-medium flex items-center">
+                                Ver más <i class="fas fa-chevron-right ml-1 text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <button class="border border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white py-3 px-6 rounded-lg font-medium transition duration-300 flex items-center mx-auto">
+                    Ver todos los productos <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">¿Por qué elegir PureClean?</h2>
+                    <p class="text-gray-600 mb-8">Nuestros productos están diseñados con los más altos estándares de calidad e innovación para ofrecer resultados superiores.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0 text-teal-500 mr-4">
+                                <i class="fas fa-check-circle text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800">Tecnología Avanzada</h3>
+                                <p class="text-gray-600">Formula patentada que garantiza máxima eficiencia en la limpieza y desinfección.</p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="flex-shrink-0 text-teal-500 mr-4">
+                                <i class="fas fa-leaf text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800">Eco-Friendly</h3>
+                                <p class="text-gray-600">Ingredientes biodegradables que protegen el medio ambiente sin comprometer resultados.</p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="flex-shrink-0 text-teal-500 mr-4">
+                                <i class="fas fa-shield-alt text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800">Certificaciones</h3>
+                                <p class="text-gray-600">Certificados por las principales autoridades en salud y seguridad industrial.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/65154a3d-4181-4f61-8f1a-2f5f86016928.png" alt="Laboratorio moderno con cientificos analizando muestras de productos de limpieza" class="rounded-lg shadow-lg w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-teal-700 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">¿Listo para transformar tus procesos de limpieza?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Nuestros asesores están disponibles para ayudarte a encontrar la solución perfecta para tus necesidades.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="bg-white text-teal-700 hover:bg-gray-100 py-3 px-8 rounded-lg font-medium transition duration-300">Contactar Asesor</button>
+                <button class="border-2 border-white text-white hover:bg-teal-800 py-3 px-8 rounded-lg font-medium transition duration-300">Llámanos +56 9 1234 5678</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <img src="./imagenes/image.png" alt="Logo PureClean en blanco con tipografía profesional minimalista" class="h-10 mb-4">
+                    <p class="text-gray-400">Líderes en soluciones profesionales de limpieza y desinfección desde 2010.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Productos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Limpieza Profesional</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Hogar</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Industrial</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Desinfección</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Empresa</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Nosotros</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Certificaciones</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Trabaja con Nosotros</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Sostenibilidad</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contacto</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Av. Ejemplo 1234, Santiago</li>
+                        <li class="flex items-center"><i class="fas fa-phone-alt mr-2"></i> +56 9 1234 5678</li>
+                        <li class="flex items-center"><i class="fas fa-envelope mr-2"></i> contacto@mambi.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2023 Mambi. Todos los derechos reservados.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Términos de Servicio</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Política de Privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Overlay -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="absolute top-0 right-0 h-full w-full sm:w-96 bg-white shadow-xl transform transition-transform duration-300">
+            <div class="p-4 border-b">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-xl font-bold">Carrito de Mambi</h2>
+                    <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="cart-items" class="p-4 h-2/3 overflow-y-auto">
+                <!-- Cart items will be added here dynamically -->
+                <p id="empty-cart-message" class="text-center text-gray-500 py-8">Tu carrito está vacío</p>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 border-t bg-white">
+                <div class="flex justify-between mb-4">
+                    <span class="font-semibold">Total:</span>
+                    <span id="cart-total" class="font-bold">$0</span>
+                </div>
+                <button id="checkout-btn" class="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 rounded-lg font-medium">
+                    Finalizar Compra
+                </button>
+            </div>
+        </div>
     </div>
-  </section>
-
-  <section id="nosotros" class="nosotros">
-    <h2>¿Quiénes Somos?</h2>
-    <p>Somos una empresa dedicada a ofrecer productos de aseo de alta calidad para mantener tus espacios impecables.</p>
-  </section>
-
-  <footer id="contacto">
-    <h2>Contacto</h2>
-    <p>Teléfono: 300 123 4567</p>
-    <p>Correo: info@productosdeaseo.com</p>
-    <p>Instagram: @productosdeaseo</p>
-  </footer>
+    <script src="./script.js"></script>
 </body>
 </html>
+
